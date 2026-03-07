@@ -26,8 +26,8 @@ export const seniorMentors: SeniorMentorProfile[] = [
     major: '计算机科学',
     academicInterests: ['人工智能', '机器学习', '计算机视觉'],
     hobbies: ['编程', '阅读'],
-    experienceSummary: '在Google实习，有丰富的项目经验。',
-    availability: 'High',
+    experienceSummary: '曾在Google实习，有丰富的项目经验。',
+    availability: '高',
   },
   {
     id: 'mentor-2',
@@ -35,8 +35,8 @@ export const seniorMentors: SeniorMentorProfile[] = [
     major: '自动化',
     academicInterests: ['控制理论', '机器人学'],
     hobbies: ['徒步', '摄影'],
-    experienceSummary: '全国大学生机器人大赛一等奖。',
-    availability: 'Medium',
+    experienceSummary: '全国大学生机器人大赛一等奖获得者。',
+    availability: '中',
   },
   {
     id: 'mentor-3',
@@ -45,7 +45,7 @@ export const seniorMentors: SeniorMentorProfile[] = [
     academicInterests: ['Web开发', '移动应用开发'],
     hobbies: ['音乐', '游戏'],
     experienceSummary: '开发了多款独立应用，有创业经验。',
-    availability: 'High',
+    availability: '高',
   },
 ];
 

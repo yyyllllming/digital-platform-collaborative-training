@@ -34,6 +34,12 @@ function SubmitButton() {
   return <Button type="submit" className="w-full" disabled={pending}>{pending ? "生成中..." : "获取个性化成长路径"}</Button>;
 }
 
+const likelihoodTextMap: { [key: string]: string } = {
+  'High': '高',
+  'Medium': '中',
+  'Low': '低',
+};
+
 export default function GrowthPage() {
   const [state, formAction] = useActionState(getGrowthPlanAction, initialState);
 
@@ -57,7 +63,7 @@ export default function GrowthPage() {
             {state?.message && (
               <Alert variant="destructive" className="mt-4">
                 <AlertCircle className="h-4 w-4" />
-                <AlertTitle>Error</AlertTitle>
+                <AlertTitle>错误</AlertTitle>
                 <AlertDescription>{state.message}</AlertDescription>
               </Alert>
             )}
@@ -86,7 +92,7 @@ export default function GrowthPage() {
                       <h4 className="font-semibold">{path.pathName}</h4>
                       <Badge variant={path.likelihood === 'High' ? 'default' : path.likelihood === 'Medium' ? 'secondary' : 'outline'}
                         className={path.likelihood === 'High' ? 'bg-green-600 text-white' : ''}>
-                        {path.likelihood} Likelihood
+                        {likelihoodTextMap[path.likelihood]} 可能性
                       </Badge>
                     </div>
                     <p className="text-sm text-muted-foreground mt-1">{path.description}</p>

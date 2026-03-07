@@ -1,37 +1,37 @@
 'use server';
 /**
- * @fileOverview A digital growth advisor AI agent.
+ * @fileOverview 数字成长顾问 AI 代理。
  *
- * - digitalGrowthAdvisor - A function that provides personalized advice and predictive insights to students.
- * - DigitalGrowthAdvisorInput - The input type for the digitalGrowthAdvisor function.
- * - DigitalGrowthAdvisorOutput - The return type for the digitalGrowthAdvisor function.
+ * - digitalGrowthAdvisor - 一个为学生提供个性化建议和预测性见解的函数。
+ * - DigitalGrowthAdvisorInput - digitalGrowthAdvisor 函数的输入类型。
+ * - DigitalGrowthAdvisorOutput - digitalGrowthAdvisor 函数的返回类型。
  */
 
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
 
-// Input Schema
+// 输入模式
 const DigitalGrowthAdvisorInputSchema = z.object({
   studentProfileDescription: z.string().describe(
-    "A detailed textual description of the student's current profile, including academic background, major, grades, interests, skills, extracurricular activities, and career aspirations. For example: 'Student is a 3rd-year Computer Science major with a 3.8 GPA, strong interest in AI/ML, participated in hackathons, proficient in Python and C++. Aspiration: Software Engineer at a major tech company.'"
+    "学生当前情况的详细文字描述，包括学术背景、专业、成绩、兴趣、技能、课外活动和职业规划。例如：'学生是一名大三计算机科学专业的学生，GPA 3.8，对 AI/ML 有浓厚兴趣，参加过编程马拉松，熟练掌握 Python 和 C++。职业目标：成为一家大型科技公司的软件工程师。'"
   ),
   historicalDataContext: z.string().describe(
-    "A summary of anonymized historical student data, including common success patterns, typical challenges faced by students with similar profiles, and career outcomes for various academic paths. This context helps in providing predictive insights. For example: 'Historical data shows that CS majors with AI interests often succeed in data science roles if they take advanced statistics. Students struggling with math in early years often benefit from peer tutoring.'"
+    "匿名历史学生数据的摘要，包括常见的成功模式、类似背景学生面临的典型挑战以及不同学术路径的职业成果。此背景信息有助于提供预测性见解。例如：'历史数据显示，对AI感兴趣的计算机科学专业学生如果选修了高级统计学，通常会在数据科学领域取得成功。学年初在数学上遇到困难的学生通常能从同伴辅导中受益。'"
   ),
 });
 export type DigitalGrowthAdvisorInput = z.infer<typeof DigitalGrowthAdvisorInputSchema>;
 
-// Output Schema
+// 输出模式
 const DigitalGrowthAdvisorOutputSchema = z.object({
   predictedPaths: z.array(
     z.object({
-      pathName: z.string().describe("The name of a potential academic or career path (e.g., 'Software Engineer - AI/ML Focus', 'Academic Researcher in Computer Vision')."),
-      description: z.string().describe("A brief description of this predicted path and why it's suitable based on the student's profile and historical data."),
-      likelihood: z.enum(['High', 'Medium', 'Low']).describe("The estimated likelihood of the student successfully pursuing this path based on current profile and historical data."),
+      pathName: z.string().describe("一个潜在的学术或职业路径名称（例如，“软件工程师 - AI/ML方向”，“计算机视觉学术研究员”）。"),
+      description: z.string().describe("根据学生的个人情况和历史数据，对这条预测路径的简要描述及其适合原因。"),
+      likelihood: z.enum(['High', 'Medium', 'Low']).describe("根据当前个人情况和历史数据，学生成功追求此路径的估计可能性。"),
     })
-  ).describe("An array of potential academic and career paths with predictive insights."),
-  personalizedAdvice: z.string().describe("Tailored advice for the student to achieve their goals, overcome challenges, or make informed decisions, considering their profile and historical patterns."),
-  recommendations: z.array(z.string()).describe("Actionable recommendations such as specific courses, skills to develop, internships to pursue, or networking activities."),
+  ).describe("一个包含预测性见解的潜在学术和职业路径数组。"),
+  personalizedAdvice: z.string().describe("为学生量身定制的建议，以帮助他们实现目标、克服挑战或做出明智决策，建议会考虑他们的个人情况和历史模式。"),
+  recommendations: z.array(z.string()).describe("可行的建议，如具体的课程、需要发展的技能、可以申请的实习或社交活动。"),
 });
 export type DigitalGrowthAdvisorOutput = z.infer<typeof DigitalGrowthAdvisorOutputSchema>;
 
@@ -43,19 +43,19 @@ const digitalGrowthAdvisorPrompt = ai.definePrompt({
   name: 'digitalGrowthAdvisorPrompt',
   input: { schema: DigitalGrowthAdvisorInputSchema },
   output: { schema: DigitalGrowthAdvisorOutputSchema },
-  prompt: `You are a Digital Growth Advisor designed to help students make informed decisions about their academic and career paths.
-Your task is to analyze a student's current profile and a summary of historical student data to provide predictive insights and personalized advice.
+  prompt: `你是一位数字成长顾问，旨在帮助学生就其学术和职业道路做出明智的决定。
+你的任务是分析学生的当前个人情况和历史学生数据摘要，以提供预测性见解和个性化建议。
 
-Carefully consider the 'Historical Data Context' to identify patterns, common success factors, and potential pitfalls relevant to the student's 'Student Profile Description'.
-Then, generate a list of potential academic and career paths with their likelihood, provide personalized advice, and suggest actionable recommendations.
+请仔细考虑“历史数据背景”，以识别与学生的“学生个人情况描述”相关的模式、常见成功因素和潜在陷阱。
+然后，生成一个包含可能性评级的潜在学术和职业路径列表，提供个性化建议，并提出可行的建议。
 
-Student Profile Description:
+学生个人情况描述:
 {{{studentProfileDescription}}}
 
-Historical Data Context:
+历史数据背景:
 {{{historicalDataContext}}}
 
-Please provide your analysis and recommendations in the specified JSON format.`,
+请以指定的 JSON 格式提供你的分析和建议。`,
 });
 
 const digitalGrowthAdvisorFlow = ai.defineFlow(
@@ -67,7 +67,7 @@ const digitalGrowthAdvisorFlow = ai.defineFlow(
   async (input) => {
     const { output } = await digitalGrowthAdvisorPrompt(input);
     if (!output) {
-      throw new Error("Failed to generate digital growth advisor output.");
+      throw new Error("未能生成数字成长顾问的输出。");
     }
     return output;
   }

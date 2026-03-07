@@ -17,21 +17,21 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import { seniorMentors, resources } from "@/lib/data";
 
 const chartData = [
-  { month: "January", skills: 1, networking: 2 },
-  { month: "February", skills: 2, networking: 3 },
-  { month: "March", skills: 3, networking: 4 },
-  { month: "April", skills: 4, networking: 3 },
-  { month: "May", skills: 3, networking: 5 },
-  { month: "June", skills: 5, networking: 6 },
+  { month: "一月", skills: 1, networking: 2 },
+  { month: "二月", skills: 2, networking: 3 },
+  { month: "三月", skills: 3, networking: 4 },
+  { month: "四月", skills: 4, networking: 3 },
+  { month: "五月", skills: 3, networking: 5 },
+  { month: "六月", skills: 5, networking: 6 },
 ];
 
 const chartConfig = {
   skills: {
-    label: "Skills Acquired",
+    label: "学习技能",
     color: "hsl(var(--chart-1))",
   },
   networking: {
-    label: "Networking Events",
+    label: "社交活动",
     color: "hsl(var(--chart-2))",
   },
 } satisfies ChartConfig;
@@ -42,11 +42,11 @@ export default function DashboardPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="text-3xl font-bold tracking-tight">Welcome back, 杨黎明!</h1>
+      <h1 className="text-3xl font-bold tracking-tight">欢迎回来, 杨黎明!</h1>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Your Mentor</CardTitle>
+            <CardTitle className="text-sm font-medium">你的导师</CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -62,33 +62,33 @@ export default function DashboardPage() {
             </div>
             <Button size="sm" className="mt-4 w-full">
               <MessageSquare className="mr-2 h-4 w-4" />
-              Chat with Mentor
+              与导师聊天
             </Button>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Upcoming Tasks</CardTitle>
+            <CardTitle className="text-sm font-medium">待办任务</CardTitle>
             <BookOpenCheck className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="space-y-3 text-sm">
-              <p>1. Complete "Advanced Algorithms" course notes.</p>
-              <p>2. Attend the "AI in Healthcare" webinar.</p>
-              <p>3. Prepare for midterm exams.</p>
+              <p>1. 完成“高级算法”课程笔记。</p>
+              <p>2. 参加“AI在医疗健康中的应用”网络研讨会。</p>
+              <p>3. 准备期中考试。</p>
             </div>
             <Link href="/growth">
-              <Button variant="outline" size="sm" className="mt-4 w-full">View Growth Plan</Button>
+              <Button variant="outline" size="sm" className="mt-4 w-full">查看成长计划</Button>
             </Link>
           </CardContent>
         </Card>
         
         <Card className="lg:col-span-1">
           <CardHeader>
-            <CardTitle>Recent Resource</CardTitle>
+            <CardTitle>最新资源</CardTitle>
             <CardDescription>
-              Latest study material shared by your peers.
+              由你的同学分享的最新学习资料。
             </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
@@ -99,12 +99,12 @@ export default function DashboardPage() {
               </Avatar>
               <div className="grid gap-1">
                 <p className="font-semibold">{recentResource.title}</p>
-                <p className="text-sm text-muted-foreground">Shared by {recentResource.author}</p>
+                <p className="text-sm text-muted-foreground">由 {recentResource.author} 分享</p>
               </div>
               <Link href="/resources" className="ml-auto shrink-0">
                 <Button variant="outline" size="icon" className="h-8 w-8">
                   <ArrowUpRight className="h-4 w-4" />
-                  <span className="sr-only">View Resource</span>
+                  <span className="sr-only">查看资源</span>
                 </Button>
               </Link>
             </div>
@@ -113,8 +113,8 @@ export default function DashboardPage() {
       </div>
       <Card>
         <CardHeader>
-          <CardTitle>Personal Growth Tracker</CardTitle>
-          <CardDescription>Your progress over the last 6 months.</CardDescription>
+          <CardTitle>个人成长追踪</CardTitle>
+          <CardDescription>你过去6个月的进展。</CardDescription>
         </CardHeader>
         <CardContent>
           <ChartContainer config={chartConfig} className="h-[300px] w-full">

@@ -17,7 +17,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: '校园智联',
-  description: '新老生协同培养平台 (Peer-to-Peer Collaborative Growth Platform)',
+  description: '新老生协同培养平台',
 };
 
 export default function RootLayout({
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="zh-CN" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

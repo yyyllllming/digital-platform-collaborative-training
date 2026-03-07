@@ -15,11 +15,11 @@ import {
 } from 'lucide-react';
 
 const navItems = [
-  { href: '/', icon: <LayoutDashboard />, label: 'Dashboard', tooltip: 'Dashboard' },
-  { href: '/mentors', icon: <Users />, label: 'Find a Mentor', tooltip: 'Find a Mentor' },
-  { href: '/growth', icon: <TrendingUp />, label: 'Growth Advisor', tooltip: 'Growth Advisor' },
-  { href: '/resources', icon: <BookOpen />, label: 'Resources', tooltip: 'Resources' },
-  { href: '/profile', icon: <UserCircle />, label: 'My Profile', tooltip: 'My Profile' },
+  { href: '/', icon: <LayoutDashboard />, label: '仪表盘', tooltip: '仪表盘' },
+  { href: '/mentors', icon: <Users />, label: '寻找导师', tooltip: '寻找导师' },
+  { href: '/growth', icon: <TrendingUp />, label: '成长顾问', tooltip: '成长顾问' },
+  { href: '/resources', icon: <BookOpen />, label: '资源中心', tooltip: '资源中心' },
+  { href: '/profile', icon: <UserCircle />, label: '我的档案', tooltip: '我的档案' },
 ];
 
 export function MainNav() {

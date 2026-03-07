@@ -94,7 +94,7 @@ export async function getGrowthPlanAction(prevState: GrowthPlanState, formData: 
 
   const { studentProfileDescription } = validatedFields.data;
 
-  const historicalDataContext = "Historical data shows that CS majors with AI interests often succeed in data science roles if they take advanced statistics. Students struggling with math in early years often benefit from peer tutoring.";
+  const historicalDataContext = "历史数据显示，对AI感兴趣的计算机科学专业学生如果学习了高级统计学，通常在数据科学岗位上会取得成功。在学年早期数学有困难的学生通常会从同学辅导中受益。";
   
   const growthAdvisorInput: DigitalGrowthAdvisorInput = {
     studentProfileDescription,
@@ -102,12 +102,12 @@ export async function getGrowthPlanAction(prevState: GrowthPlanState, formData: 
   };
 
   // Crude parsing for personalized suggestions. A more robust solution would be better.
-  const academicProgress = studentProfileDescription.match(/GPA:\s*([0-9.]+)/)?.[1] || "N/A";
-  const interests = studentProfileDescription.match(/Interests:\s*(.*?)\./)?.[1]?.split(', ') || [];
+  const academicProgress = studentProfileDescription.match(/当前GPA:\s*([0-9.]+)/)?.[1] || "暂无";
+  const interests = studentProfileDescription.match(/兴趣:\s*(.*?)\n/)?.[1]?.split(/[,，、\s]+/) || [];
   
   const growthSuggestionsInput: PersonalizedGrowthSuggestionsInput = {
     academicProgress: `GPA: ${academicProgress}`,
-    engagementActivities: ["Hackathons", "Coding clubs"],
+    engagementActivities: ["编程马拉松", "编程俱乐部"],
     interests,
   };
 

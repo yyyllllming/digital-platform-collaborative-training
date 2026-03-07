@@ -13,6 +13,7 @@ import { AlertCircle, Bot, CheckCircle, Lightbulb } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import { seniorMentors } from '@/lib/data';
 
 const initialState = {
   success: false,
@@ -64,7 +65,7 @@ export default function MentorsPage() {
              {state?.message && (
                 <Alert variant="destructive" className="mt-4">
                   <AlertCircle className="h-4 w-4" />
-                  <AlertTitle>Error</AlertTitle>
+                  <AlertTitle>错误</AlertTitle>
                   <AlertDescription>{state.message}</AlertDescription>
                 </Alert>
               )}
@@ -88,35 +89,39 @@ export default function MentorsPage() {
               <AlertDescription>暂时没有找到合适的导师，请尝试调整您的输入信息。</AlertDescription>
             </Alert>
           )}
-          {state.success && state.data?.matches.map((match) => (
-            <Card key={match.mentorId} className="overflow-hidden">
-                <CardHeader className="flex flex-row items-start gap-4 p-6">
-                    <Avatar className="w-16 h-16 border">
-                        <AvatarImage src={`https://picsum.photos/seed/${match.mentorId}/100/100`} data-ai-hint="person portrait" />
-                        <AvatarFallback>{match.mentorName.charAt(0)}</AvatarFallback>
-                    </Avatar>
-                    <div className="flex-1">
-                        <CardTitle className="text-2xl">{match.mentorName}</CardTitle>
-                        <CardDescription>计算机科学</CardDescription>
-                         <div className="flex flex-wrap gap-2 mt-2">
-                            <Badge variant="secondary">人工智能</Badge>
-                            <Badge variant="secondary">机器学习</Badge>
-                         </div>
-                    </div>
-                    <Button variant="default">发送邀请</Button>
-                </CardHeader>
-                <CardContent className="p-6 pt-0">
-                    <Separator className="my-4"/>
-                    <div className="flex items-start gap-3 text-sm">
-                        <Lightbulb className="h-5 w-5 mt-0.5 text-primary flex-shrink-0" />
-                        <div>
-                            <h4 className="font-semibold mb-1">匹配原因</h4>
-                            <p className="text-muted-foreground">{match.matchReason}</p>
-                        </div>
-                    </div>
-                </CardContent>
-            </Card>
-          ))}
+          {state.success && state.data?.matches.map((match) => {
+            const mentorDetails = seniorMentors.find(m => m.id === match.mentorId);
+            return (
+              <Card key={match.mentorId} className="overflow-hidden">
+                  <CardHeader className="flex flex-row items-start gap-4 p-6">
+                      <Avatar className="w-16 h-16 border">
+                          <AvatarImage src={`https://picsum.photos/seed/${match.mentorId}/100/100`} data-ai-hint="person portrait" />
+                          <AvatarFallback>{match.mentorName.charAt(0)}</AvatarFallback>
+                      </Avatar>
+                      <div className="flex-1">
+                          <CardTitle className="text-2xl">{match.mentorName}</CardTitle>
+                          <CardDescription>{mentorDetails?.major}</CardDescription>
+                           <div className="flex flex-wrap gap-2 mt-2">
+                              {mentorDetails?.academicInterests.map(interest => (
+                                <Badge key={interest} variant="secondary">{interest}</Badge>
+                              ))}
+                           </div>
+                      </div>
+                      <Button variant="default">发送邀请</Button>
+                  </CardHeader>
+                  <CardContent className="p-6 pt-0">
+                      <Separator className="my-4"/>
+                      <div className="flex items-start gap-3 text-sm">
+                          <Lightbulb className="h-5 w-5 mt-0.5 text-primary flex-shrink-0" />
+                          <div>
+                              <h4 className="font-semibold mb-1">匹配原因</h4>
+                              <p className="text-muted-foreground">{match.matchReason}</p>
+                          </div>
+                      </div>
+                  </CardContent>
+              </Card>
+            )
+          })}
         </div>
       </div>
     </div>

@@ -1,40 +1,40 @@
 'use server';
 /**
- * @fileOverview A Genkit flow for intelligently matching new students with senior student mentors.
+ * @fileOverview 一个用于智能匹配新生与高年级学生导师的 Genkit 工作流。
  *
- * - smartPeerMatching - A function that handles the peer matching process.
- * - SmartPeerMatchingInput - The input type for the smartPeerMatching function.
- * - SmartPeerMatchingOutput - The return type for the smartPeerMatching function.
+ * - smartPeerMatching - 一个处理同伴匹配过程的函数。
+ * - SmartPeerMatchingInput - smartPeerMatching 函数的输入类型。
+ * - SmartPeerMatchingOutput - smartPeerMatching 函数的返回类型。
  */
 
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
 
 const NewStudentProfileSchema = z.object({
-  name: z.string().describe('The name of the new student.'),
-  major: z.string().describe('The academic major of the new student.'),
-  academicInterests: z.array(z.string()).describe('A list of academic interests of the new student.'),
-  hobbies: z.array(z.string()).describe('A list of hobbies and extracurricular activities of the new student.'),
-  goals: z.string().describe('The academic and career goals of the new student.'),
+  name: z.string().describe('新生的姓名。'),
+  major: z.string().describe('新生的学术专业。'),
+  academicInterests: z.array(z.string()).describe('新生的学术兴趣列表。'),
+  hobbies: z.array(z.string()).describe('新生的爱好和课外活动列表。'),
+  goals: z.string().describe('新生的学术和职业目标。'),
 });
 
 export type NewStudentProfile = z.infer<typeof NewStudentProfileSchema>;
 
 const SeniorMentorProfileSchema = z.object({
-  id: z.string().describe('Unique identifier for the senior mentor.'),
-  name: z.string().describe('The name of the senior mentor.'),
-  major: z.string().describe('The academic major of the senior mentor.'),
-  academicInterests: z.array(z.string()).describe('A list of academic interests of the senior mentor.'),
-  hobbies: z.array(z.string()).describe('A list of hobbies and extracurricular activities of the senior mentor.'),
-  experienceSummary: z.string().describe('A brief summary of the senior mentor\u0027s relevant experience, achievements, and leadership roles.'),
-  availability: z.string().describe('The mentor\u0027s availability for mentoring (e.g., \"High\", \"Medium\", \"Low\").'),
+  id: z.string().describe('高年级导师的唯一标识符。'),
+  name: z.string().describe('高年级导师的姓名。'),
+  major: z.string().describe('高年级导师的学术专业。'),
+  academicInterests: z.array(z.string()).describe('高年级导师的学术兴趣列表。'),
+  hobbies: z.array(z.string()).describe('高年级导师的爱好和课外活动列表。'),
+  experienceSummary: z.string().describe('高年级导师相关经验、成就和领导角色的简要总结。'),
+  availability: z.string().describe('导师的辅导可用时间（例如，“高”、“中”、“低”）。'),
 });
 
 export type SeniorMentorProfile = z.infer<typeof SeniorMentorProfileSchema>;
 
 const SmartPeerMatchingInputSchema = z.object({
-  newStudent: NewStudentProfileSchema.describe('The profile of the new student seeking a mentor.'),
-  seniorMentors: z.array(SeniorMentorProfileSchema).describe('A list of available senior student mentors with their profiles.'),
+  newStudent: NewStudentProfileSchema.describe('寻求导师的新生个人资料。'),
+  seniorMentors: z.array(SeniorMentorProfileSchema).describe('可用高年级学生导师及其个人资料的列表。'),
 });
 
 export type SmartPeerMatchingInput = z.infer<typeof SmartPeerMatchingInputSchema>;
@@ -42,11 +42,11 @@ export type SmartPeerMatchingInput = z.infer<typeof SmartPeerMatchingInputSchema
 const SmartPeerMatchingOutputSchema = z.object({
   matches: z.array(
     z.object({
-      mentorId: z.string().describe('The unique ID of the suggested senior mentor.'),
-      mentorName: z.string().describe('The name of the suggested senior mentor.'),
-      matchReason: z.string().describe('A concise reason explaining why this mentor is a good match for the new student.'),
+      mentorId: z.string().describe('建议的高年级导师的唯一ID。'),
+      mentorName: z.string().describe('建议的高年级导师的姓名。'),
+      matchReason: z.string().describe('解释为什么这位导师是新生良好匹配的简洁理由。'),
     })
-  ).describe('A list of up to 3 most suitable senior mentors matched with the new student.'),
+  ).describe('与新生匹配的最多3名最合适的高年级导师列表。'),
 });
 
 export type SmartPeerMatchingOutput = z.infer<typeof SmartPeerMatchingOutputSchema>;
@@ -59,32 +59,32 @@ const prompt = ai.definePrompt({
   name: 'smartPeerMatchingPrompt',
   input: { schema: SmartPeerMatchingInputSchema },
   output: { schema: SmartPeerMatchingOutputSchema },
-  prompt: `You are an intelligent peer matching assistant. Your goal is to help new students find the most suitable senior student mentors based on their profiles, interests, and academic goals.
+  prompt: `你是一个智能的同伴匹配助手。你的目标是根据新生的个人资料、兴趣和学术目标，帮助他们找到最合适的高年级学生导师。
 
-Here is the new student's profile:
-Name: {{{newStudent.name}}}
-Major: {{{newStudent.major}}}
-Academic Interests: {{#each newStudent.academicInterests}}- {{{this}}}\n{{/each}}
-Hobbies: {{#each newStudent.hobbies}}- {{{this}}}\n{{/each}}
-Goals: {{{newStudent.goals}}}
+这是新生的个人资料：
+姓名: {{{newStudent.name}}}
+专业: {{{newStudent.major}}}
+学术兴趣: {{#each newStudent.academicInterests}}- {{{this}}}\n{{/each}}
+爱好: {{#each newStudent.hobbies}}- {{{this}}}\n{{/each}}
+目标: {{{newStudent.goals}}}
 
-Here is a list of available senior student mentors. Please carefully review each mentor's profile and determine their suitability for the new student. Prioritize mentors who share similar academic interests, hobbies, or experiences relevant to the new student's goals. Also consider their availability if provided.
+这是一份可用的高年级学生导师列表。请仔细审查每位导师的个人资料，并确定他们对新生的适合性。优先考虑与新生的学术兴趣、爱好或与新生目标相关的经验相似的导师。如果提供了可用时间，也请考虑。
 
-Available Senior Mentors:
+可用的高年级导师：
 {{#each seniorMentors}}
-Mentor ID: {{{id}}}
-Mentor Name: {{{name}}}
-Major: {{{major}}}
-Academic Interests: {{#each academicInterests}}- {{{this}}}\n{{/each}}
-Hobbies: {{#each hobbies}}- {{{this}}}\n{{/each}}
-Experience Summary: {{{experienceSummary}}}
-Availability: {{{availability}}}
+导师ID: {{{id}}}
+导师姓名: {{{name}}}
+专业: {{{major}}}
+学术兴趣: {{#each academicInterests}}- {{{this}}}\n{{/each}}
+爱好: {{#each hobbies}}- {{{this}}}\n{{/each}}
+经验总结: {{{experienceSummary}}}
+可用时间: {{{availability}}}
 ---
 {{/each}}
 
-Based on the new student's profile and the available senior mentors, identify up to 3 most suitable mentors. For each suggested mentor, provide their ID, name, and a concise reason explaining why they are a good match for the new student. If no suitable mentors are found, return an empty array.
+根据新生的个人资料和可用的高年级导师，找出最多3名最合适的导师。对于每位建议的导师，提供他们的ID、姓名和一条简洁的理由，解释为什么他们是新生的良好匹配。如果没有找到合适的导师，返回一个空数组。
 
-Output in JSON format matching the SmartPeerMatchingOutputSchema.`,
+输出为符合 SmartPeerMatchingOutputSchema 的 JSON 格式。`,
 });
 
 const smartPeerMatchingFlow = ai.defineFlow(
