@@ -1,3 +1,52 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "user-avatar",
+      "description": "User's avatar",
+      "imageUrl": "https://picsum.photos/seed/avatar1/100/100",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "mentor-1",
+      "description": "Mentor 1 avatar",
+      "imageUrl": "https://picsum.photos/seed/mentor1/100/100",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "mentor-2",
+      "description": "Mentor 2 avatar",
+      "imageUrl": "https://picsum.photos/seed/mentor2/100/100",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "mentor-3",
+      "description": "Mentor 3 avatar",
+      "imageUrl": "https://picsum.photos/seed/mentor3/100/100",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "resource-1",
+      "description": "Resource 1 image",
+      "imageUrl": "https://picsum.photos/seed/resource1/400/250",
+      "imageHint": "books library"
+    },
+    {
+      "id": "resource-2",
+      "description": "Resource 2 image",
+      "imageUrl": "https://picsum.photos/seed/resource2/400/250",
+      "imageHint": "code screen"
+    },
+    {
+      "id": "resource-3",
+      "description": "Resource 3 image",
+      "imageUrl": "https://picsum.photos/seed/resource3/400/250",
+      "imageHint": "presentation seminar"
+    },
+    {
+      "id": "resource-4",
+      "description": "Resource 4 image",
+      "imageUrl": "https://picsum.photos/seed/resource4/400/250",
+      "imageHint": "career fair"
+    }
+  ]
 }
