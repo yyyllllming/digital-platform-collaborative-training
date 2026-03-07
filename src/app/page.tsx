@@ -60,9 +60,11 @@ export default function DashboardPage() {
                 <p className="text-sm text-muted-foreground">{mentor.major}</p>
               </div>
             </div>
-            <Button size="sm" className="mt-4 w-full">
-              <MessageSquare className="mr-2 h-4 w-4" />
-              与导师聊天
+            <Button asChild size="sm" className="mt-4 w-full">
+              <Link href="/mentors">
+                <MessageSquare className="mr-2 h-4 w-4" />
+                与导师聊天
+              </Link>
             </Button>
           </CardContent>
         </Card>

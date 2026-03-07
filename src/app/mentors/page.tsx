@@ -14,6 +14,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { seniorMentors } from '@/lib/data';
+import { useToast } from '@/hooks/use-toast';
 
 const initialState = {
   success: false,
@@ -29,6 +30,14 @@ function SubmitButton() {
 
 export default function MentorsPage() {
   const [state, formAction] = useActionState(findMentorsAction, initialState);
+  const { toast } = useToast();
+
+  const handleInviteClick = (mentorName: string) => {
+    toast({
+      title: '邀请已发送',
+      description: `已向 ${mentorName} 发送邀请。`,
+    });
+  };
 
   return (
     <div className="grid md:grid-cols-3 gap-8">
@@ -107,7 +116,7 @@ export default function MentorsPage() {
                               ))}
                            </div>
                       </div>
-                      <Button variant="default">发送邀请</Button>
+                      <Button variant="default" onClick={() => handleInviteClick(match.mentorName)}>发送邀请</Button>
                   </CardHeader>
                   <CardContent className="p-6 pt-0">
                       <Separator className="my-4"/>

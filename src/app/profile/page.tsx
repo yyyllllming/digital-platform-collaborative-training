@@ -1,11 +1,23 @@
+"use client";
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { currentUser } from "@/lib/data";
 import { Separator } from "@/components/ui/separator";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ProfilePage() {
+  const { toast } = useToast();
+
+  const handleEditClick = () => {
+    toast({
+      title: "功能开发中",
+      description: "编辑个人档案的功能正在开发中，敬请期待！",
+    });
+  };
+
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       <div>
@@ -23,7 +35,7 @@ export default function ProfilePage() {
             <CardDescription className="text-md mt-1">{currentUser.major} / {currentUser.grade}</CardDescription>
             <p className="text-sm text-muted-foreground mt-2">{currentUser.email}</p>
           </div>
-          <Button>编辑档案</Button>
+          <Button onClick={handleEditClick}>编辑档案</Button>
         </CardHeader>
         <Separator />
         <CardContent className="pt-6 grid gap-6">
