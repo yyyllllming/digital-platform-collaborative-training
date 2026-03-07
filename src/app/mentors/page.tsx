@@ -1,6 +1,7 @@
 "use client";
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -26,7 +27,7 @@ function SubmitButton() {
 }
 
 export default function MentorsPage() {
-  const [state, formAction] = useFormState(findMentorsAction, initialState);
+  const [state, formAction] = useActionState(findMentorsAction, initialState);
 
   return (
     <div className="grid md:grid-cols-3 gap-8">

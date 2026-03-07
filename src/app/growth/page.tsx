@@ -1,6 +1,7 @@
 "use client";
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState } from "react";
+import { useFormStatus } from 'react-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -34,7 +35,7 @@ function SubmitButton() {
 }
 
 export default function GrowthPage() {
-  const [state, formAction] = useFormState(getGrowthPlanAction, initialState);
+  const [state, formAction] = useActionState(getGrowthPlanAction, initialState);
 
   return (
     <div className="grid lg:grid-cols-3 gap-8">
