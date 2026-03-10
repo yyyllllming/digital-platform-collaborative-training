@@ -2,8 +2,8 @@ import type { SeniorMentorProfile, NewStudentProfile } from './types';
 import placeholderImages from './placeholder-images.json';
 
 export const currentUser = {
-  name: '杨黎明',
-  email: 'liming.yang@example.com',
+  name: '张伟',
+  email: 'wei.zhang@example.com',
   avatarUrl: placeholderImages.placeholderImages.find(p => p.id === 'user-avatar')?.imageUrl,
   major: '智能感知工程',
   grade: '23级',
