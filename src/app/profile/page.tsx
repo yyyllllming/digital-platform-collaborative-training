@@ -4,12 +4,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { currentUser } from "@/lib/data";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/context/auth-context";
+import { LogIn, UserCircle } from "lucide-react";
 
 export default function ProfilePage() {
   const { toast } = useToast();
+  const { isAuthenticated, currentUser, login } = useAuth();
 
   const handleEditClick = () => {
     toast({
@@ -17,6 +19,20 @@ export default function ProfilePage() {
       description: "编辑个人档案的功能正在开发中，敬请期待！",
     });
   };
+
+  if (!isAuthenticated || !currentUser) {
+    return (
+      <div className="flex flex-col items-center justify-center text-center p-8 border-2 border-dashed rounded-lg h-96">
+        <UserCircle className="h-16 w-16 text-muted-foreground mb-4" />
+        <h3 className="text-xl font-semibold mb-2">请先登录</h3>
+        <p className="text-muted-foreground max-w-sm mb-6">登录后即可查看您的个人档案。</p>
+        <Button onClick={login}>
+          <LogIn className="mr-2 h-4 w-4" />
+          登录
+        </Button>
+      </div>
+    )
+  }
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">

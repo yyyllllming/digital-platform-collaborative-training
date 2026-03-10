@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, BookOpenCheck, Users, MessageSquare } from "lucide-react";
+import { ArrowUpRight, BookOpenCheck, Users, MessageSquare, LogIn } from "lucide-react";
 import Link from "next/link";
 import {
   ChartContainer,
@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/chart";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import { seniorMentors, resources } from "@/lib/data";
+import { useAuth } from "@/context/auth-context";
 
 const chartData = [
   { month: "一月", skills: 1, networking: 2 },
@@ -39,10 +40,24 @@ const chartConfig = {
 export default function DashboardPage() {
   const mentor = seniorMentors[0];
   const recentResource = resources[0];
+  const { isAuthenticated, currentUser, login } = useAuth();
+
+  if (!isAuthenticated || !currentUser) {
+    return (
+      <div className="flex flex-col items-center justify-center text-center p-8 border-2 border-dashed rounded-lg h-96">
+        <h1 className="text-3xl font-bold tracking-tight mb-4">欢迎来到校园智联</h1>
+        <p className="text-muted-foreground max-w-sm mb-6">一个为新老生打造的协同培养平台。请先登录以访问您的个性化仪表盘。</p>
+        <Button onClick={login} size="lg">
+          <LogIn className="mr-2 h-5 w-5" />
+          登录
+        </Button>
+      </div>
+    )
+  }
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="text-3xl font-bold tracking-tight">欢迎回来, 杨黎明!</h1>
+      <h1 className="text-3xl font-bold tracking-tight">欢迎回来, {currentUser.name}!</h1>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">

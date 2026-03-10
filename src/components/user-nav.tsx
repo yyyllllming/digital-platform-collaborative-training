@@ -16,12 +16,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import Link from "next/link";
-import { currentUser } from "@/lib/data";
-import { CreditCard, LogOut, Settings, User } from "lucide-react";
+import { CreditCard, LogIn, LogOut, Settings, User } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/context/auth-context";
 
 export function UserNav() {
   const { toast } = useToast();
+  const { isAuthenticated, currentUser, login, logout } = useAuth();
 
   const handleNotImplemented = (feature: string) => {
     toast({
@@ -30,12 +31,14 @@ export function UserNav() {
     });
   };
 
-  const handleLogout = () => {
-    toast({
-      title: "成功退出",
-      description: "您已成功退出登录。",
-    });
-  };
+  if (!isAuthenticated || !currentUser) {
+    return (
+      <Button onClick={login}>
+        <LogIn className="mr-2 h-4 w-4" />
+        登录
+      </Button>
+    )
+  }
 
   return (
     <DropdownMenu>
@@ -74,7 +77,7 @@ export function UserNav() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={handleLogout}>
+        <DropdownMenuItem onClick={logout}>
           <LogOut className="mr-2 h-4 w-4" />
           <span>退出登录</span>
         </DropdownMenuItem>
