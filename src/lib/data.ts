@@ -100,7 +100,7 @@ export const resources = [
     description: '深入讲解了动态规划、图算法等高级主题。',
     image: placeholderImages.placeholderImages.find(p => p.id === 'resource-2')?.imageUrl,
     tags: ['算法', '计算机科学'],
-    downloadUrl: 'https://example.com/advanced-algorithms-notes',
+    downloadUrl: 'https://www.coursera.org/learn/algorithms-part1',
   },
   {
     id: 'res-2',
@@ -110,7 +110,7 @@ export const resources = [
     description: '从零开始，用Python实现常见的机器学习模型。',
     image: placeholderImages.placeholderImages.find(p => p.id === 'resource-1')?.imageUrl,
     tags: ['AI', 'Python'],
-    downloadUrl: 'https://example.com/ml-getting-started-guide',
+    downloadUrl: 'https://www.coursera.org/specializations/machine-learning-introduction',
   },
   {
     id: 'res-3',
@@ -120,7 +120,7 @@ export const resources = [
     description: '涵盖了JavaScript、React等常见面试题。',
     image: placeholderImages.placeholderImages.find(p => p.id === 'resource-3')?.imageUrl,
     tags: ['Web开发', '面试'],
-    downloadUrl: 'https://example.com/frontend-interview-handbook',
+    downloadUrl: 'https://www.coursera.org/learn/front-end-interview-prep',
   },
   {
     id: 'res-4',
@@ -130,6 +130,6 @@ export const resources = [
     description: '一步步教你如何为开源社区做出贡献。',
     image: placeholderImages.placeholderImages.find(p => p.id === 'resource-4')?.imageUrl,
     tags: ['开源', '职业发展'],
-    downloadUrl: 'https://example.com/how-to-contribute-to-opensource',
+    downloadUrl: 'https://opensource.guide/how-to-contribute/',
   }
 ];
