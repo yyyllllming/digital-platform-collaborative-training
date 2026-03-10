@@ -2,7 +2,7 @@ import path from 'path';
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  /* app config */
   outputFileTracingRoot: path.join(__dirname),
   typescript: {
     ignoreBuildErrors: true,
@@ -35,3 +35,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+

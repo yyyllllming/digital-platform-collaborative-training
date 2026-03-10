@@ -125,6 +125,12 @@
       "description": "Resource 4 image",
       "imageUrl": "https://picsum.photos/seed/resource4/400/250",
       "imageHint": "career fair"
+    }    ,
+    {
+      "id": "campus-1",
+      "description": "Campus life image",
+      "imageUrl": "https://picsum.photos/seed/campus1/400/250",
+      "imageHint": "campus students"
     }
   ]
 }
