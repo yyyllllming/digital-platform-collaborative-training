@@ -1,3 +1,14 @@
+export type UserProfile = {
+  id: string;
+  name: string;
+  email: string;
+  avatarUrl: string | undefined;
+  major: string;
+  grade: string;
+  interests: string[];
+  skills: string[];
+};
+
 export type {
   PersonalizedGrowthSuggestionsInput,
   PersonalizedGrowthSuggestionsOutput

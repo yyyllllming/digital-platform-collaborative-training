@@ -1,7 +1,8 @@
-import type { SeniorMentorProfile, NewStudentProfile } from './types';
+import type { SeniorMentorProfile, NewStudentProfile, UserProfile } from './types';
 import placeholderImages from './placeholder-images.json';
 
-export const currentUser = {
+export const currentUser: UserProfile = {
+  id: 'main-user',
   name: '张伟',
   email: 'wei.zhang@example.com',
   avatarUrl: placeholderImages.placeholderImages.find(p => p.id === 'user-avatar')?.imageUrl,
@@ -76,7 +77,7 @@ export const seniorMentors: SeniorMentorProfile[] = [
   },
 ];
 
-export const students = [
+export const students: UserProfile[] = [
   { id: 'student-1', name: '陈晨', major: '计算机科学', grade: '23级', interests: ['游戏开发', '图形学'], skills: ['C++', 'Unity'], email: 'chen.chen@example.com', avatarUrl: placeholderImages.placeholderImages.find(p => p.id === 'student-1')?.imageUrl },
   { id: 'student-2', name: '刘洋', major: '软件工程', grade: '23级', interests: ['Web开发', 'DevOps'], skills: ['Java', 'Spring', 'Docker'], email: 'yang.liu@example.com', avatarUrl: placeholderImages.placeholderImages.find(p => p.id === 'student-2')?.imageUrl },
   { id: 'student-3', name: '王静', major: '智能感知工程', grade: '22级', interests: ['物联网', '数据分析'], skills: ['Python', 'SQL'], email: 'jing.wang@example.com', avatarUrl: placeholderImages.placeholderImages.find(p => p.id === 'student-3')?.imageUrl },
