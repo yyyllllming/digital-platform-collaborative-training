@@ -18,8 +18,25 @@ import {
 import Link from "next/link";
 import { currentUser } from "@/lib/data";
 import { CreditCard, LogOut, Settings, User } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 export function UserNav() {
+  const { toast } = useToast();
+
+  const handleNotImplemented = (feature: string) => {
+    toast({
+      title: "功能开发中",
+      description: `${feature}功能正在开发中，敬请期待！`,
+    });
+  };
+
+  const handleLogout = () => {
+    toast({
+      title: "成功退出",
+      description: "您已成功退出登录。",
+    });
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -47,17 +64,17 @@ export function UserNav() {
               <span>个人资料</span>
             </DropdownMenuItem>
           </Link>
-          <DropdownMenuItem>
+          <DropdownMenuItem onClick={() => handleNotImplemented('账单')}>
             <CreditCard className="mr-2 h-4 w-4" />
             <span>账单</span>
           </DropdownMenuItem>
-          <DropdownMenuItem>
+          <DropdownMenuItem onClick={() => handleNotImplemented('设置')}>
             <Settings className="mr-2 h-4 w-4" />
             <span>设置</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={handleLogout}>
           <LogOut className="mr-2 h-4 w-4" />
           <span>退出登录</span>
         </DropdownMenuItem>
