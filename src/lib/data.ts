@@ -47,7 +47,48 @@ export const seniorMentors: SeniorMentorProfile[] = [
     experienceSummary: '开发了多款独立应用，有创业经验。',
     availability: '高',
   },
+  {
+    id: 'mentor-4',
+    name: '孙七',
+    major: '数据科学',
+    academicInterests: ['数据分析', '大数据', '深度学习'],
+    hobbies: ['羽毛球', '旅游'],
+    experienceSummary: 'Kaggle 大赛金牌，主导过多个数据科学项目。',
+    availability: '高',
+  },
+  {
+    id: 'mentor-5',
+    name: '周八',
+    major: '物联网工程',
+    academicInterests: ['嵌入式系统', '传感器网络', '边缘计算'],
+    hobbies: ['电子制作', '爬山'],
+    experienceSummary: '设计并实现了一套智能家居系统原型。',
+    availability: '中',
+  },
+  {
+    id: 'mentor-6',
+    name: '吴九',
+    major: '网络安全',
+    academicInterests: ['渗透测试', '密码学', '区块链'],
+    hobbies: ['CTF比赛', '科幻小说'],
+    experienceSummary: '多次在国内CTF比赛中获奖，有丰富的安全攻防经验。',
+    availability: '低',
+  },
 ];
+
+export const students = [
+  { id: 'student-1', name: '陈晨', major: '计算机科学', grade: '23级', interests: ['游戏开发', '图形学'], skills: ['C++', 'Unity'], email: 'chen.chen@example.com', avatarUrl: placeholderImages.placeholderImages.find(p => p.id === 'student-1')?.imageUrl },
+  { id: 'student-2', name: '刘洋', major: '软件工程', grade: '23级', interests: ['Web开发', 'DevOps'], skills: ['Java', 'Spring', 'Docker'], email: 'yang.liu@example.com', avatarUrl: placeholderImages.placeholderImages.find(p => p.id === 'student-2')?.imageUrl },
+  { id: 'student-3', name: '王静', major: '智能感知工程', grade: '22级', interests: ['物联网', '数据分析'], skills: ['Python', 'SQL'], email: 'jing.wang@example.com', avatarUrl: placeholderImages.placeholderImages.find(p => p.id === 'student-3')?.imageUrl },
+  { id: 'student-4', name: '李涛', major: '数据科学', grade: '22级', interests: ['机器学习', '自然语言处理'], skills: ['Python', 'TensorFlow'], email: 'tao.li@example.com', avatarUrl: placeholderImages.placeholderImages.find(p => p.id === 'student-4')?.imageUrl },
+  { id: 'student-5', name: '张悦', major: '自动化', grade: '23级', interests: ['机器人', '控制系统'], skills: ['C', 'MATLAB'], email: 'yue.zhang@example.com', avatarUrl: placeholderImages.placeholderImages.find(p => p.id === 'student-5')?.imageUrl },
+  { id: 'student-6', name: '徐峰', major: '网络工程', grade: '22级', interests: ['网络安全', '云计算'], skills: ['Linux', 'Bash'], email: 'feng.xu@example.com', avatarUrl: placeholderImages.placeholderImages.find(p => p.id === 'student-6')?.imageUrl },
+  { id: 'student-7', name: '黄娟', major: '计算机科学', grade: '23级', interests: ['移动开发', 'UI/UX设计'], skills: ['Swift', 'Figma'], email: 'juan.huang@example.com', avatarUrl: placeholderImages.placeholderImages.find(p => p.id === 'student-7')?.imageUrl },
+  { id: 'student-8', name: '马超', major: '软件工程', grade: '22级', interests: ['后端开发', '数据库'], skills: ['Go', 'PostgreSQL'], email: 'chao.ma@example.com', avatarUrl: placeholderImages.placeholderImages.find(p => p.id === 'student-8')?.imageUrl },
+  { id: 'student-9', name: '胡琳', major: '数据科学', grade: '23级', interests: ['数据可视化', '商业智能'], skills: ['R', 'Tableau'], email: 'lin.hu@example.com', avatarUrl: placeholderImages.placeholderImages.find(p => p.id === 'student-9')?.imageUrl },
+  { id: 'student-10', name: '林芳', major: '智能感知工程', grade: '22级', interests: ['边缘计算', '嵌入式AI'], skills: ['Python', 'C++'], email: 'fang.lin@example.com', avatarUrl: placeholderImages.placeholderImages.find(p => p.id === 'student-10')?.imageUrl },
+];
+
 
 export const resources = [
   {

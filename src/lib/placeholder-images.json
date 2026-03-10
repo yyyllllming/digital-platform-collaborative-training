@@ -25,6 +25,84 @@
       "imageHint": "person portrait"
     },
     {
+      "id": "mentor-4",
+      "description": "Mentor 4 avatar",
+      "imageUrl": "https://picsum.photos/seed/mentor4/100/100",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "mentor-5",
+      "description": "Mentor 5 avatar",
+      "imageUrl": "https://picsum.photos/seed/mentor5/100/100",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "mentor-6",
+      "description": "Mentor 6 avatar",
+      "imageUrl": "https://picsum.photos/seed/mentor6/100/100",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "student-1",
+      "description": "Student 1 avatar",
+      "imageUrl": "https://picsum.photos/seed/student1/100/100",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "student-2",
+      "description": "Student 2 avatar",
+      "imageUrl": "https://picsum.photos/seed/student2/100/100",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "student-3",
+      "description": "Student 3 avatar",
+      "imageUrl": "https://picsum.photos/seed/student3/100/100",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "student-4",
+      "description": "Student 4 avatar",
+      "imageUrl": "https://picsum.photos/seed/student4/100/100",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "student-5",
+      "description": "Student 5 avatar",
+      "imageUrl": "https://picsum.photos/seed/student5/100/100",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "student-6",
+      "description": "Student 6 avatar",
+      "imageUrl": "https://picsum.photos/seed/student6/100/100",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "student-7",
+      "description": "Student 7 avatar",
+      "imageUrl": "https://picsum.photos/seed/student7/100/100",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "student-8",
+      "description": "Student 8 avatar",
+      "imageUrl": "https://picsum.photos/seed/student8/100/100",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "student-9",
+      "description": "Student 9 avatar",
+      "imageUrl": "https://picsum.photos/seed/student9/100/100",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "student-10",
+      "description": "Student 10 avatar",
+      "imageUrl": "https://picsum.photos/seed/student10/100/100",
+      "imageHint": "person portrait"
+    },
+    {
       "id": "resource-1",
       "description": "Resource 1 image",
       "imageUrl": "https://picsum.photos/seed/resource1/400/250",
