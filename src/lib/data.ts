@@ -12,7 +12,7 @@ export const currentUser = {
 };
 
 export const defaultNewStudentProfile: NewStudentProfile = {
-  name: '张三',
+  name: '王晓明',
   major: '计算机科学',
   academicInterests: ['人工智能', '数据科学'],
   hobbies: ['篮球', '电影'],
@@ -22,7 +22,7 @@ export const defaultNewStudentProfile: NewStudentProfile = {
 export const seniorMentors: SeniorMentorProfile[] = [
   {
     id: 'mentor-1',
-    name: '李四',
+    name: '李伟',
     major: '计算机科学',
     academicInterests: ['人工智能', '机器学习', '计算机视觉'],
     hobbies: ['编程', '阅读'],
@@ -31,7 +31,7 @@ export const seniorMentors: SeniorMentorProfile[] = [
   },
   {
     id: 'mentor-2',
-    name: '王五',
+    name: '王芳',
     major: '自动化',
     academicInterests: ['控制理论', '机器人学'],
     hobbies: ['徒步', '摄影'],
@@ -40,7 +40,7 @@ export const seniorMentors: SeniorMentorProfile[] = [
   },
   {
     id: 'mentor-3',
-    name: '赵六',
+    name: '张敏',
     major: '软件工程',
     academicInterests: ['Web开发', '移动应用开发'],
     hobbies: ['音乐', '游戏'],
@@ -49,7 +49,7 @@ export const seniorMentors: SeniorMentorProfile[] = [
   },
   {
     id: 'mentor-4',
-    name: '孙七',
+    name: '孙秀英',
     major: '数据科学',
     academicInterests: ['数据分析', '大数据', '深度学习'],
     hobbies: ['羽毛球', '旅游'],
@@ -58,7 +58,7 @@ export const seniorMentors: SeniorMentorProfile[] = [
   },
   {
     id: 'mentor-5',
-    name: '周八',
+    name: '周静',
     major: '物联网工程',
     academicInterests: ['嵌入式系统', '传感器网络', '边缘计算'],
     hobbies: ['电子制作', '爬山'],
@@ -67,7 +67,7 @@ export const seniorMentors: SeniorMentorProfile[] = [
   },
   {
     id: 'mentor-6',
-    name: '吴九',
+    name: '吴强',
     major: '网络安全',
     academicInterests: ['渗透测试', '密码学', '区块链'],
     hobbies: ['CTF比赛', '科幻小说'],
@@ -94,7 +94,7 @@ export const resources = [
   {
     id: 'res-1',
     title: '高级算法课程笔记',
-    author: '李四',
+    author: '李伟',
     authorAvatar: placeholderImages.placeholderImages.find(p => p.id === 'mentor-1')?.imageUrl,
     description: '深入讲解了动态规划、图算法等高级主题。',
     image: placeholderImages.placeholderImages.find(p => p.id === 'resource-2')?.imageUrl,
@@ -103,7 +103,7 @@ export const resources = [
   {
     id: 'res-2',
     title: '机器学习入门指南',
-    author: '王五',
+    author: '王芳',
     authorAvatar: placeholderImages.placeholderImages.find(p => p.id === 'mentor-2')?.imageUrl,
     description: '从零开始，用Python实现常见的机器学习模型。',
     image: placeholderImages.placeholderImages.find(p => p.id === 'resource-1')?.imageUrl,
@@ -112,7 +112,7 @@ export const resources = [
   {
     id: 'res-3',
     title: '前端开发面试宝典',
-    author: '赵六',
+    author: '张敏',
     authorAvatar: placeholderImages.placeholderImages.find(p => p.id === 'mentor-3')?.imageUrl,
     description: '涵盖了JavaScript、React等常见面试题。',
     image: placeholderImages.placeholderImages.find(p => p.id === 'resource-3')?.imageUrl,
@@ -121,7 +121,7 @@ export const resources = [
   {
     id: 'res-4',
     title: '如何参与开源项目',
-    author: 'John Doe',
+    author: '张伟',
     authorAvatar: "https://picsum.photos/seed/mentor-main/100/100",
     description: '一步步教你如何为开源社区做出贡献。',
     image: placeholderImages.placeholderImages.find(p => p.id === 'resource-4')?.imageUrl,
