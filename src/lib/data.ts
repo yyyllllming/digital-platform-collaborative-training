@@ -1,4 +1,4 @@
-import type { SeniorMentorProfile, NewStudentProfile, UserProfile } from './types';
+import type { SeniorMentorProfile, NewStudentProfile, UserProfile, CommunityPost } from './types';
 import placeholderImages from './placeholder-images.json';
 
 export const currentUser: UserProfile = {
@@ -132,4 +132,55 @@ export const resources = [
     tags: ['开源', '职业发展'],
     downloadUrl: 'https://opensource.guide/how-to-contribute/',
   }
+];
+
+export const communityPosts: CommunityPost[] = [
+  {
+    id: 'post-1',
+    author: '陈晨',
+    authorId: 'student-1',
+    authorAvatar: students.find(s => s.id === 'student-1')?.avatarUrl,
+    title: '寻找游戏开发伙伴，做一个类似《原神》的开放世界游戏！',
+    content: '我是一名大二学生，主攻游戏开发和图形学，熟练掌握 C++ 和 Unity。最近有一个大胆的想法，想组建一个团队，挑战制作一款小型的开放世界 RPG 游戏。目前还缺一个后端和策划，有没有感兴趣的同学一起搞点大事？',
+    tags: ['游戏开发', '项目招募', 'Unity'],
+    timestamp: '2024-05-20T14:30:00Z',
+    likes: 128,
+    commentsCount: 24,
+  },
+  {
+    id: 'post-2',
+    author: '刘洋',
+    authorId: 'student-2',
+    authorAvatar: students.find(s => s.id === 'student-2')?.avatarUrl,
+    title: '二手出售：9成新机械键盘，Cherry MX 茶轴',
+    content: '去年入手，用的不多，手感绝佳。因为换了笔记本所以出掉。价格 300，可小刀。有意的同学请私信联系。',
+    tags: ['二手交易', '数码外设'],
+    timestamp: '2024-05-22T09:00:00Z',
+    likes: 45,
+    commentsCount: 18,
+  },
+  {
+    id: 'post-3',
+    author: '王静',
+    authorId: 'student-3',
+    authorAvatar: students.find(s => s.id === 'student-3')?.avatarUrl,
+    title: '求一个周末一起去图书馆学习的学伴',
+    content: '本人22级智能感知工程专业，最近在准备期末考试，感觉一个人学习效率有点低。想找一个能相互监督、一起进步的学伴，男女不限，专业不限。目标是周末两天都在图书馆从早待到晚！',
+    tags: ['寻找学伴', '学习'],
+    timestamp: '2024-05-21T18:00:00Z',
+    likes: 77,
+    commentsCount: 32,
+  },
+  {
+    id: 'post-4',
+    author: '李涛',
+    authorId: 'student-4',
+    authorAvatar: students.find(s => s.id === 'student-4')?.avatarUrl,
+    title: '关于保研/考研到 AI Lab 的一些经验分享',
+    content: '刚刚拿到了某大厂 AI Lab 的 offer，一路走来踩了不少坑，也积累了一些经验。想和学弟学妹们分享一下关于科研、论文、面试方面的心得。大家有什么问题可以在评论区留言，我会尽量回答。',
+    tags: ['考研', '保研', '经验分享', 'AI'],
+    timestamp: '2024-05-19T11:45:00Z',
+    likes: 256,
+    commentsCount: 98,
+  },
 ];

@@ -12,6 +12,7 @@ import {
   TrendingUp,
   BookOpen,
   UserCircle,
+  MessagesSquare,
 } from 'lucide-react';
 
 const navItems = [
@@ -19,6 +20,7 @@ const navItems = [
   { href: '/mentors', icon: <Users />, label: '寻找导师', tooltip: '寻找导师' },
   { href: '/growth', icon: <TrendingUp />, label: '成长顾问', tooltip: '成长顾问' },
   { href: '/resources', icon: <BookOpen />, label: '资源中心', tooltip: '资源中心' },
+  { href: '/community', icon: <MessagesSquare />, label: '交流社区', tooltip: '交流社区' },
   { href: '/profile', icon: <UserCircle />, label: '我的档案', tooltip: '我的档案' },
 ];
 

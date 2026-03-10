@@ -9,6 +9,19 @@ export type UserProfile = {
   skills: string[];
 };
 
+export type CommunityPost = {
+  id: string;
+  author: string;
+  authorId: string;
+  authorAvatar: string | undefined;
+  title: string;
+  content: string;
+  tags: string[];
+  timestamp: string; // ISO 8601 format
+  likes: number;
+  commentsCount: number;
+};
+
 export type {
   PersonalizedGrowthSuggestionsInput,
   PersonalizedGrowthSuggestionsOutput
