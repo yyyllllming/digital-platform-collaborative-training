@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -44,9 +45,11 @@ export default function ResourcesPage() {
                 </Avatar>
                 <span>{resource.author}</span>
               </div>
-              <Button variant="ghost" size="sm">
-                <Download className="mr-2 h-4 w-4" />
-                下载
+              <Button asChild variant="ghost" size="sm">
+                <Link href={resource.downloadUrl} target="_blank" rel="noopener noreferrer">
+                  <Download className="mr-2 h-4 w-4" />
+                  下载
+                </Link>
               </Button>
             </CardFooter>
           </Card>
