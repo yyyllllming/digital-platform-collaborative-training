@@ -1,5 +1,6 @@
 {
-  "name": "nextn",`r`n  "description": "Digital platform for peer mentorship and student development",
+  "name": "nextn",
+  "description": "Digital platform for peer mentorship and student development",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -64,4 +65,5 @@
     "typescript": "^5"
   }
 }
+
 
