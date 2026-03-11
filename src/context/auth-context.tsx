@@ -1,9 +1,9 @@
 'use client';
 
 import React, { createContext, useContext, useState, ReactNode, useCallback } from 'react';
-import { currentUser as staticCurrentUser, students } from '@/lib/data';
 import type { UserProfile } from '@/lib/types';
 import { useToast } from '@/hooks/use-toast';
+import { getCurrentUser, getStudents } from '@/services/platform-data';
 import {
   Dialog,
   DialogContent,
@@ -28,6 +28,8 @@ interface AuthContextType {
   updateUser: (newDetails: Partial<Omit<UserProfile, 'id' | 'email'>>) => void;
 }
 
+const staticCurrentUser = getCurrentUser();
+const students = getStudents();
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 function LoginDialog({
@@ -49,14 +51,13 @@ function LoginDialog({
       setError('学号和姓名不能为空。');
       return;
     }
-    
-    // Check the main user first
+
     if (staticCurrentUser.name === name.trim() && staticCurrentUser.id === studentId.trim()) {
-        onLoginSuccess(staticCurrentUser);
-        onOpenChange(false);
-        setName('');
-        setStudentId('');
-        return;
+      onLoginSuccess(staticCurrentUser);
+      onOpenChange(false);
+      setName('');
+      setStudentId('');
+      return;
     }
 
     const userToLogin = students.find(
@@ -81,7 +82,7 @@ function LoginDialog({
     }
     onOpenChange(isOpen);
   };
-  
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleLogin();
@@ -140,7 +141,6 @@ function LoginDialog({
   );
 }
 
-
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [currentUser, setCurrentUser] = useState<User>(isAuthenticated ? staticCurrentUser : null);
@@ -150,12 +150,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const login = () => {
     setIsLoginDialogOpen(true);
   };
-  
+
   const loginWithUser = useCallback((user: UserProfile) => {
     setIsAuthenticated(true);
     setCurrentUser(user);
     toast({
-      title: "成功登录",
+      title: '成功登录',
       description: `欢迎回来, ${user.name}!`,
     });
   }, [toast]);
@@ -164,28 +164,28 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setIsAuthenticated(false);
     setCurrentUser(null);
     toast({
-      title: "成功退出",
-      description: "您已成功退出登录。",
+      title: '成功退出',
+      description: '您已成功退出登录。',
     });
   };
-  
+
   const updateUser = (newDetails: Partial<Omit<UserProfile, 'id' | 'email'>>) => {
     if (currentUser) {
       const updatedUser = { ...currentUser, ...newDetails };
       setCurrentUser(updatedUser);
-      
+
       if (currentUser.id === staticCurrentUser.id) {
-          Object.assign(staticCurrentUser, updatedUser);
+        Object.assign(staticCurrentUser, updatedUser);
       } else {
-          const studentIndex = students.findIndex(s => s.id === currentUser.id);
-          if (studentIndex > -1) {
-            students[studentIndex] = { ...students[studentIndex], ...updatedUser };
-          }
+        const studentIndex = students.findIndex((student) => student.id === currentUser.id);
+        if (studentIndex > -1) {
+          students[studentIndex] = { ...students[studentIndex], ...updatedUser };
+        }
       }
 
       toast({
-        title: "档案已更新",
-        description: "您的个人信息已成功保存。",
+        title: '档案已更新',
+        description: '您的个人信息已成功保存。',
       });
     }
   };
@@ -201,7 +201,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   return (
     <AuthContext.Provider value={value}>
       {children}
-      <LoginDialog 
+      <LoginDialog
         open={isLoginDialogOpen}
         onOpenChange={setIsLoginDialogOpen}
         onLoginSuccess={loginWithUser}

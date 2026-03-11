@@ -5,8 +5,12 @@ export type UserProfile = {
   avatarUrl: string | undefined;
   major: string;
   grade: string;
+  role: 'freshman' | 'senior';
   interests: string[];
   skills: string[];
+  supportNeeds: string[];
+  canSupportWith: string[];
+  motivation: string;
 };
 
 export type CommunityPost = {
@@ -17,9 +21,26 @@ export type CommunityPost = {
   title: string;
   content: string;
   tags: string[];
-  timestamp: string; // ISO 8601 format
+  postType: 'ask_help' | 'share_experience' | 'recruit_partner' | 'activity_notice';
+  audience: 'all' | 'freshman' | 'senior';
+  timestamp: string;
   likes: number;
   commentsCount: number;
+};
+
+export type ResourceItem = {
+  id: string;
+  title: string;
+  author: string;
+  authorAvatar: string | undefined;
+  description: string;
+  image: string | undefined;
+  tags: string[];
+  downloadUrl: string;
+  category: string;
+  audience: 'all' | 'freshman' | 'senior';
+  mentorValue: string;
+  freshmanValue: string;
 };
 
 export type {
@@ -33,6 +54,12 @@ export type {
   NewStudentProfile,
   SeniorMentorProfile
 } from '@/ai/flows/smart-peer-matching';
+
+export type MentorProfile = import('@/ai/flows/smart-peer-matching').SeniorMentorProfile & {
+  supportAreas: string[];
+  mentorBenefits: string[];
+  style: string;
+};
 
 export type {
   DigitalGrowthAdvisorInput,

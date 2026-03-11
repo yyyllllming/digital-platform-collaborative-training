@@ -5,21 +5,21 @@ import { z } from 'zod';
 import { smartPeerMatching } from '@/ai/flows/smart-peer-matching';
 import { getPersonalizedGrowthSuggestions } from '@/ai/flows/personalized-growth-suggestions';
 import { digitalGrowthAdvisor } from '@/ai/flows/digital-growth-advisor';
-import type { 
-  NewStudentProfile, 
-  SmartPeerMatchingOutput, 
-  PersonalizedGrowthSuggestionsOutput, 
+import type {
+  NewStudentProfile,
+  SmartPeerMatchingOutput,
+  PersonalizedGrowthSuggestionsOutput,
   DigitalGrowthAdvisorOutput,
   DigitalGrowthAdvisorInput,
   PersonalizedGrowthSuggestionsInput
 } from '@/lib/types';
-import { seniorMentors } from '@/lib/data';
+import { getMentors } from '@/services/platform-data';
 
 const findMentorsSchema = z.object({
-  major: z.string().min(1, { message: "专业不能为空" }),
-  academicInterests: z.string().min(1, { message: "学术兴趣不能为空" }),
-  hobbies: z.string().min(1, { message: "爱好不能为空" }),
-  goals: z.string().min(1, { message: "目标不能为空" }),
+  major: z.string().min(1, { message: '专业不能为空' }),
+  academicInterests: z.string().min(1, { message: '学术兴趣不能为空' }),
+  hobbies: z.string().min(1, { message: '爱好不能为空' }),
+  goals: z.string().min(1, { message: '目标不能为空' }),
 });
 
 type FindMentorsState = {
@@ -47,7 +47,7 @@ export async function findMentorsAction(prevState: FindMentorsState, formData: F
   const { major, academicInterests, hobbies, goals } = validatedFields.data;
 
   const newStudent: NewStudentProfile = {
-    name: '新生', // Placeholder name
+    name: '新生',
     major,
     academicInterests: academicInterests.split(/[,，、\s]+/).filter(Boolean),
     hobbies: hobbies.split(/[,，、\s]+/).filter(Boolean),
@@ -57,17 +57,17 @@ export async function findMentorsAction(prevState: FindMentorsState, formData: F
   try {
     const result = await smartPeerMatching({
       newStudent,
-      seniorMentors,
+      seniorMentors: getMentors(),
     });
     return { success: true, data: result };
   } catch (e) {
-    console.error("AI matching failed:", e);
-    return { success: false, message: "AI匹配失败，请稍后再试。" };
+    console.error('AI matching failed:', e);
+    return { success: false, message: 'AI匹配失败，请稍后再试。' };
   }
 }
 
 const getGrowthPlanSchema = z.object({
-  studentProfileDescription: z.string().min(20, { message: "档案描述需要更详细一些" }),
+  studentProfileDescription: z.string().min(20, { message: '档案描述需要更详细一些' }),
 });
 
 type GrowthPlanState = {
@@ -94,20 +94,19 @@ export async function getGrowthPlanAction(prevState: GrowthPlanState, formData: 
 
   const { studentProfileDescription } = validatedFields.data;
 
-  const historicalDataContext = "历史数据显示，对AI感兴趣的计算机科学专业学生如果学习了高级统计学，通常在数据科学岗位上会取得成功。在学年早期数学有困难的学生通常会从同学辅导中受益。";
-  
+  const historicalDataContext = '历史数据显示，对AI感兴趣的计算机科学专业学生如果学习了高级统计学，通常在数据科学岗位上会取得成功。在学年早期数学有困难的学生通常会从同学辅导中受益。';
+
   const growthAdvisorInput: DigitalGrowthAdvisorInput = {
     studentProfileDescription,
     historicalDataContext,
   };
 
-  // Crude parsing for personalized suggestions. A more robust solution would be better.
-  const academicProgress = studentProfileDescription.match(/当前GPA:\s*([0-9.]+)/)?.[1] || "暂无";
+  const academicProgress = studentProfileDescription.match(/当前GPA:\s*([0-9.]+)/)?.[1] || '暂无';
   const interests = studentProfileDescription.match(/兴趣:\s*(.*?)\n/)?.[1]?.split(/[,，、\s]+/) || [];
-  
+
   const growthSuggestionsInput: PersonalizedGrowthSuggestionsInput = {
     academicProgress: `GPA: ${academicProgress}`,
-    engagementActivities: ["编程马拉松", "编程俱乐部"],
+    engagementActivities: ['编程马拉松', '编程俱乐部'],
     interests,
   };
 
@@ -118,7 +117,7 @@ export async function getGrowthPlanAction(prevState: GrowthPlanState, formData: 
     ]);
     return { success: true, data: { growthAdvisor, growthSuggestions } };
   } catch (e) {
-    console.error("AI growth plan generation failed:", e);
-    return { success: false, message: "AI 规划生成失败，请稍后再试。" };
+    console.error('AI growth plan generation failed:', e);
+    return { success: false, message: 'AI 规划生成失败，请稍后再试。' };
   }
 }

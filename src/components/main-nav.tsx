@@ -7,20 +7,22 @@ import {
   SidebarMenuButton,
 } from '@/components/ui/sidebar';
 import {
-  LayoutDashboard,
-  Users,
-  TrendingUp,
   BookOpen,
-  UserCircle,
+  CheckSquare,
+  LayoutDashboard,
   MessagesSquare,
+  TrendingUp,
+  UserCircle,
+  Users,
 } from 'lucide-react';
 
 const navItems = [
-  { href: '/', icon: <LayoutDashboard />, label: '仪表盘', tooltip: '仪表盘' },
-  { href: '/mentors', icon: <Users />, label: '寻找导师', tooltip: '寻找导师' },
+  { href: '/', icon: <LayoutDashboard />, label: '协同总览', tooltip: '协同总览' },
+  { href: '/mentors', icon: <Users />, label: '学长结对', tooltip: '学长结对' },
   { href: '/growth', icon: <TrendingUp />, label: '成长顾问', tooltip: '成长顾问' },
-  { href: '/resources', icon: <BookOpen />, label: '资源中心', tooltip: '资源中心' },
-  { href: '/community', icon: <MessagesSquare />, label: '交流社区', tooltip: '交流社区' },
+  { href: '/tasks', icon: <CheckSquare />, label: '协同任务', tooltip: '协同任务' },
+  { href: '/resources', icon: <BookOpen />, label: '经验资源', tooltip: '经验资源' },
+  { href: '/community', icon: <MessagesSquare />, label: '协同社区', tooltip: '协同社区' },
   { href: '/profile', icon: <UserCircle />, label: '我的档案', tooltip: '我的档案' },
 ];
 
